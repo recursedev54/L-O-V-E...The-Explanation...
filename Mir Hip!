@@ -1,0 +1,47 @@
+import tkinter as tk
+from tkinter import Canvas
+
+def create_interface():
+    root = tk.Tk()
+    root.title("Polygon Interface")
+    root.attributes('-fullscreen', True)
+    
+    # Create a Canvas widget
+    canvas = Canvas(root, width=root.winfo_screenwidth(), height=root.winfo_screenheight(), bg="black")
+    canvas.pack(fill="both", expand=True)
+    
+    # Draw rectangles to mimic the layout
+    canvas.create_rectangle(50, 50, 350, 100, fill="white")  # Email field
+    canvas.create_rectangle(50, 120, 350, 170, fill="pink")  # Text field
+
+    # Draw polygons to mimic the colorful shapes
+    canvas.create_polygon(400, 200, 450, 150, 500, 200, 450, 250, fill="orange", outline="black")
+    canvas.create_polygon(550, 250, 600, 200, 650, 250, 600, 300, fill="purple", outline="black")
+    canvas.create_polygon(700, 200, 750, 150, 800, 200, 750, 250, fill="cyan", outline="black")
+    canvas.create_polygon(850, 250, 900, 200, 950, 250, 900, 300, fill="yellow", outline="black")
+
+    # Create text to mimic the "Welcome to Love Lane!" message
+    canvas.create_text(root.winfo_screenwidth() / 2, 100, text="Welcome to Love Lane!", fill="yellow", font=("Arial", 24))
+    canvas.create_text(root.winfo_screenwidth() / 2, 140, text="LIVE LIFE, LET'S ALL LIVE UMBRELLA", fill="lightblue", font=("Arial", 14))
+
+    # Create a button-like shape to mimic the control button
+    canvas.create_oval(50, 300, 150, 400, fill="blue")
+    canvas.create_text(100, 350, text="↻", fill="white", font=("Arial", 24))
+
+    # Add colorful polygons to simulate the art
+    shapes = [
+        (100, 500, 150, 450, 200, 500, 150, 550, "red"),
+        (250, 550, 300, 500, 350, 550, 300, 600, "green"),
+        (400, 500, 450, 450, 500, 500, 450, 550, "blue"),
+        (550, 550, 600, 500, 650, 550, 600, 600, "yellow"),
+        (700, 500, 750, 450, 800, 500, 750, 550, "purple"),
+        (850, 550, 900, 500, 950, 550, 900, 600, "orange"),
+    ]
+
+    for shape in shapes:
+        canvas.create_polygon(shape[:8], fill=shape[8], outline="black")
+
+    root.mainloop()
+
+if __name__ == "__main__":
+    create_interface()
